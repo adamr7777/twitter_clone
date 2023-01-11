@@ -17,13 +17,7 @@ i{
     cursor: pointer;
 }
 
-.liked{
-    color: red;
-}
 
-.retweeted {
-  color: limegreen;
-}
 
 /* layout */
 
@@ -68,6 +62,11 @@ button{
 }
 
 /* tweet */
+
+
+.fa-solid {
+    color: #999;
+}
 
 .tweet{
     border-top: 1px solid lightgray;
@@ -125,4 +124,14 @@ button{
 /* utility */
 .hidden{
     display: none;
+}
+
+
+
+.liked{
+    color: red;
+}
+
+.retweeted {
+  color: limegreen;
 }
