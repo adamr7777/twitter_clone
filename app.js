@@ -1,19 +1,11 @@
 import { tweetsData } from './data.js';
-
-const tweetBtn = document.getElementById('tweet-btn');
-const tweetInput = document.getElementById('tweet-input');
-
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 
 
 
 //event listeners
 
-tweetBtn.addEventListener('click', function() {
-  const text = tweetInput.value;
-  console.log(text);
-})
- 
 
 
 document.addEventListener('click', function(event) {
@@ -31,6 +23,12 @@ document.addEventListener('click', function(event) {
     const tweetId = event.target.dataset.reply;
     replyHandle(tweetId);
   }
+
+  else if (event.target.id === 'tweet-btn') {
+    postTweet();
+  }
+
+
 })
 
 
@@ -133,5 +131,28 @@ function replyHandle(id) {
   document.getElementById(`replies-${id}`)
     .classList.toggle('hidden');
 }
+
+function postTweet() {
+  const tweetInput = document.getElementById('tweet-input');
+  const tweetObj =  {
+    handle: `@Batman123`,
+    profilePic: `images/profile_pic.png`,
+    likes: 0,
+    retweets: 0,
+    tweetText: tweetInput.value,
+    replies: [],
+    isLiked: false,
+    isRetweeted: false,
+    uuid: uuidv4(),
+  }
+  if (tweetInput.value) {
+    tweetsData.unshift(tweetObj);
+    render();
+    tweetInput.value = '';
+  }
+  
+}
+
+
 
 render();
